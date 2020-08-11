@@ -1,0 +1,25 @@
+.logo {
+    height: 4rem;
+}
+
+.navbar-menu {
+    justify-content: flex-end;
+    margin-right: 5rem;
+}
+
+.jumbotron {
+    width: 80%;
+    border-radius: 1rem;
+    margin: 5rem auto;
+}
+
+.jumbotron-body {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.jumbotron-body li {
+    margin-bottom: 1rem;
+}
