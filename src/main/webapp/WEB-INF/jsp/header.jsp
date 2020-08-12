@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/logo.png" class="logo"></a>
+        <a class="navbar-brand" href="<c:url value="/" />"><img src="img/logo.png" class="logo"></a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>

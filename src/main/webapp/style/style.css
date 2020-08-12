@@ -23,3 +23,28 @@
 .jumbotron-body li {
     margin-bottom: 1rem;
 }
+
+.card-container {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.card-container .card {
+    width: 20rem;
+    height: 35rem;
+    margin-bottom: 2rem;
+}
+
+.card-container .card img {
+    height: 70%;
+}
+
+form {
+    width: 80%;
+    margin: 5rem auto;
+    display: flex;
+    flex-flow: column wrap;
+}
