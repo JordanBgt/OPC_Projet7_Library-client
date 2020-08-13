@@ -49,7 +49,7 @@
 
 
         <div class="card-container">
-            <c:forEach items="${documents}" var="document">
+            <c:forEach items="${pageDocuments.content}" var="document">
                <div class="card">
                    <img src="${document.photo.fileToBase64String}">
                    <div class="card-body">
@@ -60,6 +60,28 @@
                </div>
             </c:forEach>
         </div>
+
+        <c:if test="${pageDocuments.totalPages > 1}">
+            <nav class="pagination">
+                <ul class="pagination">
+                    <li class="page-item  ${pageDocuments.first ? 'disabled' : ''}">
+                        <a class="page-link" href="<c:url value="documents/page/${pageDocuments.number -1}" />" >
+                            <span>&laquo;</span>
+                        </a>
+                    </li>
+                    <c:forEach var="i" begin="1" end="${pageDocuments.totalPages}" step="1">
+                        <li class="page-item ${pageDocuments.number +1  == i ? 'active' : ''}">
+                            <a href="<c:url value="documents/page/${i -1}" />" class="page-link">${i}</a>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item  ${pageDocuments.last ? 'disabled' : ''}">
+                        <a href="<c:url value="documents/page/${pageDocuments.number +1}" />" class="page-link">
+                            <span>&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
 
         <%@ include file="footer.jsp"%>
     </body>

@@ -48,3 +48,7 @@ form {
     display: flex;
     flex-flow: column wrap;
 }
+
+.pagination ul {
+    margin: 1rem auto;
+}
