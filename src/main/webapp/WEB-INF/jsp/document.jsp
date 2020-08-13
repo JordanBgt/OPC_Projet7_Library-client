@@ -55,7 +55,7 @@
                    <div class="card-body">
                        <h5>${document.title}</h5>
                        <p>${document.authorLastName} ${document.authorFirstName}</p>
-                       <a class="btn btn-primary" href="<c:url value="documents/${document.id}" />">Detail</a>
+                       <a class="btn btn-primary" href="<c:url value="/documents/${document.id}" />">Detail</a>
                    </div>
                </div>
             </c:forEach>
