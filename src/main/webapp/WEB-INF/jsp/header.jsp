@@ -13,7 +13,10 @@
                 <li class="nav-item" role="presentation"><a class="nav-link" href="<c:url value="/documents" />">Catalogue</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                 <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Profil </a>
-                    <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="#">Se connecter</a><a role="presentation" class="dropdown-item" href="#">Se déconnecter</a><a role="presentation" class="dropdown-item" href="#">Consulter profil</a></div>
+                    <div role="menu" class="dropdown-menu">
+                        <a role="presentation" class="dropdown-item" href="<c:url value="/login" />">Se connecter</a>
+                        <a role="presentation" class="dropdown-item" href="<c:url value="/logout" />">Se déconnecter</a>
+                        <a role="presentation" class="dropdown-item" href="<c:url value="/profil" />">Consulter profil</a></div>
                 </li>
             </ul><span class="navbar-text actions"></span></div>
     </div>
