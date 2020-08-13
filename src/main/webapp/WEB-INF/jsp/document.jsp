@@ -65,17 +65,17 @@
             <nav class="pagination">
                 <ul class="pagination">
                     <li class="page-item  ${pageDocuments.first ? 'disabled' : ''}">
-                        <a class="page-link" href="<c:url value="documents/page/${pageDocuments.number -1}" />" >
+                        <a class="page-link" href="<c:url value="documents"><c:param name="page" value="${pageDocuments.number - 1}"/></c:url>" >
                             <span>&laquo;</span>
                         </a>
                     </li>
                     <c:forEach var="i" begin="1" end="${pageDocuments.totalPages}" step="1">
                         <li class="page-item ${pageDocuments.number +1  == i ? 'active' : ''}">
-                            <a href="<c:url value="documents/page/${i -1}" />" class="page-link">${i}</a>
+                            <a href="<c:url value="documents"><c:param name="page" value="${i-1}" /></c:url>" class="page-link">${i}</a>
                         </li>
                     </c:forEach>
                     <li class="page-item  ${pageDocuments.last ? 'disabled' : ''}">
-                        <a href="<c:url value="documents/page/${pageDocuments.number +1}" />" class="page-link">
+                        <a href="<c:url value="documents"><c:param name="page" value="${pageDocuments.number + 1}"/></c:url>" class="page-link">
                             <span>&raquo;</span>
                         </a>
                     </li>

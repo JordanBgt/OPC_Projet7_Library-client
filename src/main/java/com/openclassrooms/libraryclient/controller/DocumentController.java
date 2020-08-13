@@ -8,6 +8,7 @@ import com.openclassrooms.libraryclient.proxy.DocumentProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,17 +24,21 @@ public class DocumentController {
     @Autowired
     private DocumentProxy documentProxy;
 
+    private DocumentForm documentForm = new DocumentForm();
+
     @GetMapping
-    public String getAllDocuments(Model model) {
+    public String getAllDocuments(Model model,
+                                  @RequestParam(required = false) Integer page,
+                                  @RequestParam(required = false) Integer size,
+                                  @RequestParam(required = false) String sortBy,
+                                  @RequestParam(required = false) Sort.Direction direction,
+                                  @RequestParam(required = false) boolean unpaged) {
+
         RestPageImpl<DocumentLight> pageDocuments;
-        if (model.getAttribute("pageDocuments") == null) {
-            pageDocuments = documentProxy.getAllDocuments(null, null, null, null,
-                    null, null, null, null, null, null, false);
-        } else {
-            pageDocuments = (RestPageImpl<DocumentLight>) model.getAttribute("pageDocuments");
-        }
+        pageDocuments = documentProxy.getAllDocuments(documentForm.getTitle(), documentForm.getIsbn(),
+                documentForm.getAuthorName(), documentForm.getPublisherName(), documentForm.getType(),
+                documentForm.getCategory(), page, size, sortBy, direction, unpaged);
         model.addAttribute("pageDocuments", pageDocuments);
-        DocumentForm documentForm = new DocumentForm();
         model.addAttribute("documentForm", documentForm);
         return "document";
     }
@@ -47,19 +52,7 @@ public class DocumentController {
 
     @PostMapping("/search")
     public ModelAndView searchDocuments(@ModelAttribute DocumentForm documentForm, RedirectAttributes redirectAttributes) {
-        RestPageImpl<DocumentLight> pageDocuments = documentProxy.getAllDocuments(documentForm.getTitle(),
-                documentForm.getIsbn(), documentForm.getAuthorName(), documentForm.getPublisherName(),
-                documentForm.getType(), documentForm.getCategory(), null, null, null, null,
-                false);
-        redirectAttributes.addFlashAttribute("pageDocuments", pageDocuments);
-        return new ModelAndView("redirect:/documents");
-    }
-
-    @GetMapping("/page/{page}")
-    public ModelAndView getPage(@PathVariable int page, RedirectAttributes redirectAttributes) {
-        RestPageImpl<DocumentLight> pageDocuments = documentProxy.getAllDocuments(null, null, null,
-                null, null, null, page, null, null, null, false);
-        redirectAttributes.addFlashAttribute("pageDocuments", pageDocuments);
+        this.documentForm = documentForm;
         return new ModelAndView("redirect:/documents");
     }
 
