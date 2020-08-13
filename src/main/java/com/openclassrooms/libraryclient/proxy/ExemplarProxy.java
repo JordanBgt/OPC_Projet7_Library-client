@@ -11,7 +11,7 @@ import java.util.List;
 public interface ExemplarProxy {
 
     @GetMapping
-    List<Exemplar> getAllExemplarsByDocumentId(@PathVariable Long documentId);
+    List<Exemplar> getAllExemplarsByDocumentId(@RequestParam Long documentId);
 
     @GetMapping("/{id}")
     Exemplar getExemplar(@PathVariable Long id);

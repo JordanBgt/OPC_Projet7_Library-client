@@ -1,10 +1,8 @@
 package com.openclassrooms.libraryclient.controller;
 
-import com.openclassrooms.libraryclient.model.Document;
-import com.openclassrooms.libraryclient.model.DocumentForm;
-import com.openclassrooms.libraryclient.model.DocumentLight;
-import com.openclassrooms.libraryclient.model.RestPageImpl;
+import com.openclassrooms.libraryclient.model.*;
 import com.openclassrooms.libraryclient.proxy.DocumentProxy;
+import com.openclassrooms.libraryclient.proxy.ExemplarProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/documents")
 public class DocumentController {
@@ -23,6 +23,9 @@ public class DocumentController {
 
     @Autowired
     private DocumentProxy documentProxy;
+
+    @Autowired
+    private ExemplarProxy exemplarProxy;
 
     private DocumentForm documentForm = new DocumentForm();
 
@@ -46,8 +49,10 @@ public class DocumentController {
     @GetMapping("/{id}")
     public String getDocument(Model model, @PathVariable Long id) {
         Document document = documentProxy.getDocument(id);
+        List<Exemplar> exemplars = exemplarProxy.getAllExemplarsByDocumentId(id);
         model.addAttribute("document", document);
-        return "documentDetail";
+        model.addAttribute("exemplars", exemplars);
+        return "document-detail";
     }
 
     @PostMapping("/search")

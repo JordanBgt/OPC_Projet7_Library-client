@@ -12,11 +12,13 @@ public class Document {
     private Author author;
     private String type;
     private String category;
+    private Photo photo;
 
     public Document() {
     }
 
-    public Document(Long id, String title, String isbn, String description, LocalDate publicationDate, Publisher publisher, Author author, String type, String category) {
+    public Document(Long id, String title, String isbn, String description, LocalDate publicationDate,
+                    Publisher publisher, Author author, String type, String category, Photo photo) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
@@ -26,6 +28,7 @@ public class Document {
         this.author = author;
         this.type = type;
         this.category = category;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -100,4 +103,11 @@ public class Document {
         this.category = category;
     }
 
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
 }
