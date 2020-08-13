@@ -99,4 +99,5 @@ public class Document {
     public void setCategory(String category) {
         this.category = category;
     }
+
 }
