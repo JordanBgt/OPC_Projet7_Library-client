@@ -1,0 +1,20 @@
+package com.openclassrooms.libraryclient.proxy;
+
+import com.openclassrooms.libraryclient.model.JwtResponse;
+import com.openclassrooms.libraryclient.model.LoginForm;
+import com.openclassrooms.libraryclient.model.RegisterForm;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@FeignClient(url = "http://localhost:8080/api/auth", name = "auth-api")
+public interface AuthProxy {
+
+    @PostMapping("/signin")
+    ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginForm loginRequest);
+
+    @PostMapping("/signup")
+    ResponseEntity<?> registerUser(@RequestBody RegisterForm signupRequest);
+
+}
