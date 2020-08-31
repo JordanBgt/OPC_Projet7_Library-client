@@ -10,8 +10,10 @@ import java.util.List;
 @FeignClient(url = "http://localhost:8080/api/loans", name = "loan-api")
 public interface LoanProxy {
 
+    String AUTH_TOKEN = "Authorization";
+
     @GetMapping("/users/{userId}")
-    List<Loan> getAllByUser(@PathVariable Long userId);
+    List<Loan> getAllByUser(@PathVariable Long userId, @RequestHeader(AUTH_TOKEN) String bearerToken);
 
     @PostMapping
     Loan createLoan(@RequestBody Loan loan);

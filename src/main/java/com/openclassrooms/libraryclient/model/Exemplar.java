@@ -9,16 +9,19 @@ public class Exemplar {
     private Document document;
     private Library library;
     private LocalDate loanEndDate;
+    private String documentTitle;
 
     public Exemplar() {
     }
 
-    public Exemplar(Long id, String reference, Document document, Library library, LocalDate loanEndDate) {
+    public Exemplar(Long id, String reference, Document document, Library library, LocalDate loanEndDate,
+                    String documentTitle) {
         this.id = id;
         this.reference = reference;
         this.document = document;
         this.library = library;
         this.loanEndDate = loanEndDate;
+        this.documentTitle = documentTitle;
     }
 
     public Long getId() {
@@ -59,5 +62,13 @@ public class Exemplar {
 
     public void setLoanEndDate(LocalDate loanEndDate) {
         this.loanEndDate = loanEndDate;
+    }
+
+    public String getDocumentTitle() {
+        return documentTitle;
+    }
+
+    public void setDocumentTitle(String documentTitle) {
+        this.documentTitle = documentTitle;
     }
 }
