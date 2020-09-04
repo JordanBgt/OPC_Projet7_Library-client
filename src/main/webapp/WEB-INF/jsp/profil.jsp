@@ -42,6 +42,9 @@
                                 <li class="list-group-item">
                                         ${loan.exemplar.documentTitle} - ${loan.exemplar.library.name} - ${loan.endDate}
                                 </li>
+                                <c:if test="${!loan.renewed}">
+                                    <a href="<c:url value="/profil/${loan.id}/renewal" />" class="btn btn-secondary" >Renouveler</a>
+                                </c:if>
                             </c:forEach>
                         </ul>
                     </c:when>

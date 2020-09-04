@@ -56,7 +56,7 @@ public class DocumentController {
     }
 
     @PostMapping("/search")
-    public ModelAndView searchDocuments(@ModelAttribute DocumentForm documentForm, RedirectAttributes redirectAttributes) {
+    public ModelAndView searchDocuments(@ModelAttribute DocumentForm documentForm) {
         this.documentForm = documentForm;
         return new ModelAndView("redirect:/documents");
     }
