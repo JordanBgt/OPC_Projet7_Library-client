@@ -16,6 +16,7 @@
                     <div role="menu" class="dropdown-menu">
                         <a role="presentation" class="dropdown-item" href="<c:url value="/login" />">Se connecter</a>
                         <a role="presentation" class="dropdown-item" href="<c:url value="/logout" />">Se déconnecter</a>
+                        <a role="presentation" class="dropdown-item" href="<c:url value="/register" />">Créer un compte</a>
                         <a role="presentation" class="dropdown-item" href="<c:url value="/profil" />">Consulter profil</a></div>
                 </li>
             </ul><span class="navbar-text actions"></span></div>

@@ -1,19 +1,24 @@
 package com.openclassrooms.libraryclient.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegisterForm {
 
     private String username;
     private String password;
     private String email;
-    private String role = "user";
+    private List<String> role = new ArrayList<>();
 
     public RegisterForm() {
+        this.role.add("user");
     }
 
     public RegisterForm(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role.add("user");
     }
 
     public String getUsername() {
@@ -40,7 +45,11 @@ public class RegisterForm {
         this.email = email;
     }
 
-    public String getRole() {
+    public List<String> getRole() {
         return role;
+    }
+
+    public void setRole(List<String> role) {
+        this.role = role;
     }
 }
