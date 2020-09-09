@@ -11,9 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/documents")
@@ -49,9 +49,11 @@ public class DocumentController {
     @GetMapping("/{id}")
     public String getDocument(Model model, @PathVariable Long id) {
         Document document = documentProxy.getDocument(id);
-        List<Exemplar> exemplars = exemplarProxy.getAllExemplarsByDocumentId(id);
+        List<ExemplarAvailable> exemplars = exemplarProxy.getAllAvailableExemplarsByDocumentId(id);
+        Optional<Integer> sumNmberExemplarsAvailable = exemplars.stream().map(ExemplarAvailable::getNumber).reduce(Integer::sum);
         model.addAttribute("document", document);
         model.addAttribute("exemplars", exemplars);
+        model.addAttribute("sumExemplarsAvailable", sumNmberExemplarsAvailable);
         return "document-detail";
     }
 

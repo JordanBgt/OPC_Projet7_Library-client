@@ -1,6 +1,7 @@
 package com.openclassrooms.libraryclient.proxy;
 
 import com.openclassrooms.libraryclient.model.Exemplar;
+import com.openclassrooms.libraryclient.model.ExemplarAvailable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 public interface ExemplarProxy {
 
     @GetMapping
-    List<Exemplar> getAllExemplarsByDocumentId(@RequestParam Long documentId);
+    List<ExemplarAvailable> getAllAvailableExemplarsByDocumentId(@RequestParam Long documentId);
 
     @GetMapping("/{id}")
     Exemplar getExemplar(@PathVariable Long id);

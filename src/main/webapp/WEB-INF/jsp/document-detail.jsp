@@ -35,22 +35,25 @@
 
         <div class="card detail-exemplars">
             <div class="card-body">
-                <h3 class="card-title">Exemplaires</h3>
+                <h3 class="card-title">
+                    Exemplaires disponibles
+                    <c:choose >
+                        <c:when test="${sumExemplarsAvailable.isPresent()}"><span class="badge badge-secondary">${sumExemplarsAvailable.get()}</span></c:when>
+                        <c:otherwise><span class="badge badge-danger">0</span></c:otherwise>
+                    </c:choose>
+                </h3>
                 <hr>
                 <ul class="list-group">
-                    <c:forEach items="${exemplars}" var="exemplar">
-                        <li class="list-group-item">
-                            ${exemplar.reference} - ${exemplar.library.name}
-                            <c:choose>
-                                <c:when test="${exemplar.loanEndDate == null}">
-                                    <span class="badge badge-success">Disponible</span>
-                                </c:when>
-                                <c:otherwise>
-                                    <span class="badge badge-danger">Indisponible jusqu'au ${exemplar.loanEndDate}</span>
-                                </c:otherwise>
-                            </c:choose>
-                        </li>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${exemplars.size() > 0}">
+                            <c:forEach items="${exemplars}" var="exemplar">
+                                <li class="list-group-item">
+                                    <strong>${exemplar.libraryName}</strong> - <span class="badge badge-success">${exemplar.number}</span>
+                                </li>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>Tous les exemplaires sont actuellement prêtés.</c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>
