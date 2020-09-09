@@ -125,3 +125,28 @@ form {
     margin: 0 auto 2rem auto;
 }
 
+/* PROFIL */
+.profil-container {
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.profil-container li {
+    margin: 0.5rem 0;
+}
+
+.renewal-button {
+    margin-left: 2rem;
+}
+
+.profil-container .card {
+    margin-top: 2rem;
+}
+
+.profil-container .card-header {
+    display: flex;
+}
+
+.profil-container h3 {
+    margin-left: 1rem;
+}
