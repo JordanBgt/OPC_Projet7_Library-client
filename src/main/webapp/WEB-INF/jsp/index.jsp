@@ -10,7 +10,7 @@
 
         <div class="jumbotron">
             <div class="text-center">
-                <h1 class="display-4">Bienvenue sur le site des bibliothèques de Lyon</h1>
+                <h1>Bienvenue sur le site des bibliothèques de Lyon</h1>
                 <p class="lead">Site web destiné aux usagers des bibliothèques de la ville</p>
             </div>
             <hr class="my-4">

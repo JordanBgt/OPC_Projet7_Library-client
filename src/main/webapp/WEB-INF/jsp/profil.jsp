@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -42,10 +42,16 @@
                     <ul class="list-group">
                         <c:forEach items="${loans}" var="loan">
                             <li class="list-group-item">
-                                ${loan.exemplar.documentTitle} - ${loan.exemplar.library.name} - ${loan.endDate}
-                                <c:if test="${!loan.renewed}">
-                                    <a href="<c:url value="/profil/${loan.id}/renewal" />" class="btn btn-primary renewal-button" >Renouveler</a>
-                                </c:if>
+                                <div class="row">
+                                    <div class="col-12 col-lg-9">
+                                        ${loan.exemplar.documentTitle} - ${loan.exemplar.library.name} - ${loan.endDate}
+                                    </div>
+                                    <div class="col-12 col-lg-3 col-renewal-button">
+                                        <c:if test="${!loan.renewed}">
+                                            <a href="<c:url value="/profil/${loan.id}/renewal" />" class="btn btn-primary renewal-button" >Renouveler</a>
+                                        </c:if>
+                                    </div>
+                                </div>
                             </li>
                         </c:forEach>
                     </ul>

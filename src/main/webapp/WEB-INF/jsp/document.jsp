@@ -11,21 +11,21 @@
 
         <form:form method="post" modelAttribute="documentForm" action="documents/search">
             <div class="row">
-                <div class="col form-group">
+                <div class="col-6 col-md-4 form-group">
                     <form:input path="title" id="title" class="form-control" placeholder="Titre" />
                 </div>
-                <div class="col form-group">
+                <div class="col-6 col-md-4 form-group">
                     <form:input path="isbn" id="isbn" class="form-control" placeholder="Isbn" />
                 </div>
-                <div class="col form-group">
+                <div class="col-6 col-md-4 form-group">
                     <form:input path="authorName" id="authorName" class="form-control" placeholder="Auteur" />
                 </div>
             </div>
             <div class="row">
-                <div class="col-4 form-group">
+                <div class="col-6 col-lg-4 form-group">
                     <form:input path="publisherName" id="publisherName" class="form-control" placeholder="Éditeur" />
                 </div>
-                <div class="col-2 form-group">
+                <div class="col-6 col-lg-2 form-group">
                     <form:select path="type" id="documentType" class="form-control">
                         <form:option value="">Type</form:option>
                         <form:option value="Livre" />
@@ -33,7 +33,7 @@
                         <form:option value="Bande dessinée" />
                     </form:select>
                 </div>
-                <div class="col-2 form-group">
+                <div class="col-6 col-lg-2 form-group">
                     <form:select path="category" id="category" class="form-control">
                         <form:option value="">Catégorie</form:option>
                         <form:option value="Roman" />
@@ -43,7 +43,9 @@
                         <form:option value="Littérature" />
                     </form:select>
                 </div>
-                <button class="btn btn-primary" type="submit">Rechercher</button>
+                <div class="col-4 offset-1 col-lg-2 offset-lg-1 text-center">
+                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                </div>
             </div>
         </form:form>
 
