@@ -57,15 +57,4 @@ public class DocumentLight {
     public void setPhoto(Photo photo) {
         this.photo = photo;
     }
-
-    @Override
-    public String toString() {
-        return "DocumentLight{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", authorLastName='" + authorLastName + '\'' +
-                ", authorFirstName='" + authorFirstName + '\'' +
-                ", photo=" + photo +
-                '}';
-    }
 }

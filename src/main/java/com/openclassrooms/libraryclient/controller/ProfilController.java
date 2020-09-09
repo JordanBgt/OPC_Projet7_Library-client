@@ -18,16 +18,13 @@ import java.util.List;
 @RequestMapping("/profil")
 public class ProfilController {
 
-    private final String USER = "user"; // TODO : ppt
-    private final String TOKEN_KEY = "auth-token"; // TODO : ppt
-
     @Autowired
     private LoanProxy loanProxy;
 
     @GetMapping
     public String getProfil(HttpSession session, Model model) {
-        User user = (User) session.getAttribute(USER);
-        String bearerToken = (String) session.getAttribute(TOKEN_KEY);
+        User user = (User) session.getAttribute("user");
+        String bearerToken = (String) session.getAttribute("auth-token");
         List<Loan> userLoans = loanProxy.getAllByUser(user.getId(), "Bearer " + bearerToken);
         model.addAttribute("loans", userLoans);
         model.addAttribute("user", user);
@@ -37,7 +34,7 @@ public class ProfilController {
 
     @GetMapping("/{id}/renewal")
     public ModelAndView renewLoan(@PathVariable Long id, HttpSession session) {
-        String bearerToken = (String) session.getAttribute(TOKEN_KEY);
+        String bearerToken = (String) session.getAttribute("auth-token");
         loanProxy.renewLoan(id, "Bearer " + bearerToken);
         return new ModelAndView("redirect:/profil");
     }

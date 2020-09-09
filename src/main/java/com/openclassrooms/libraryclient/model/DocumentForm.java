@@ -68,16 +68,4 @@ public class DocumentForm {
     public void setCategory(String category) {
         this.category = category.equals("") ? null : category;
     }
-
-    @Override
-    public String toString() {
-        return "DocumentForm{" +
-                "title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", authorName='" + authorName + '\'' +
-                ", publisherName='" + publisherName + '\'' +
-                ", type='" + type + '\'' +
-                ", category='" + category + '\'' +
-                '}';
-    }
 }

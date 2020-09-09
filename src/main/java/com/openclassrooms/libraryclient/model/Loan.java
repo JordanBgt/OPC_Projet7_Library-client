@@ -70,16 +70,4 @@ public class Loan {
     public void setExemplar(Exemplar exemplar) {
         this.exemplar = exemplar;
     }
-
-    @Override
-    public String toString() {
-        return "Loan{" +
-                "id=" + id +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", renewed=" + renewed +
-                ", user=" + user +
-                ", exemplar=" + exemplar +
-                '}';
-    }
 }

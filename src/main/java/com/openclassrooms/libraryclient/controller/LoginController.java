@@ -23,9 +23,6 @@ public class LoginController {
     @Autowired
     private AuthProxy authProxy;
 
-    private final String TOKEN_KEY = "auth-token"; // TODO : ppt
-    private final String USER = "user"; // TODO : ppt
-
     @GetMapping
     public String getLoginPage(Model model) {
         LoginForm loginForm = new LoginForm();
@@ -37,9 +34,9 @@ public class LoginController {
     public ModelAndView authenticateUser(@ModelAttribute LoginForm loginForm, HttpServletRequest request) {
         JwtResponse response = authProxy.authenticateUser(loginForm).getBody();
         HttpSession session = request.getSession();
-        session.setAttribute(TOKEN_KEY, response.getToken());
+        session.setAttribute("auth-token", response.getToken());
         User user = new User(response.getId(), response.getUsername(), response.getEmail());
-        session.setAttribute(USER, user);
+        session.setAttribute("user", user);
         return new ModelAndView("redirect:/");
     }
 }

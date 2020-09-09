@@ -3,7 +3,6 @@ package com.openclassrooms.libraryclient.proxy;
 import com.openclassrooms.libraryclient.model.Exemplar;
 import com.openclassrooms.libraryclient.model.ExemplarAvailable;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +15,4 @@ public interface ExemplarProxy {
 
     @GetMapping("/{id}")
     Exemplar getExemplar(@PathVariable Long id);
-
-    @PostMapping
-    Exemplar createExemplar(@RequestBody Exemplar exemplar);
-
-    @PutMapping("/{id}")
-    Exemplar updateExemplar(@RequestBody Exemplar exemplar);
-
-    @DeleteMapping("/(id}")
-    ResponseEntity<Void> deleteExemplar(@PathVariable Long id);
 }

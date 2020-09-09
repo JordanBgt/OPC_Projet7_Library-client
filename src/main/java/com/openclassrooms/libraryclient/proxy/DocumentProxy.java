@@ -5,7 +5,6 @@ import com.openclassrooms.libraryclient.model.DocumentLight;
 import com.openclassrooms.libraryclient.model.RestPageImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @FeignClient(url = "http://localhost:8080/api/documents", name = "document-api")
@@ -26,13 +25,4 @@ public interface DocumentProxy {
 
     @GetMapping("/{id}")
     Document getDocument(@PathVariable Long id);
-
-    @PostMapping
-    Document createDocument(@RequestBody Document document);
-
-    @PutMapping("/{id}")
-    Document updateDocument(@RequestBody Document document);
-
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deleteDocument(@PathVariable Long id);
 }

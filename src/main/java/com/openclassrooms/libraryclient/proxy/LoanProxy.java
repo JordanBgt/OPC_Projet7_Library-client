@@ -20,10 +20,4 @@ public interface LoanProxy {
 
     @GetMapping("/{id}/renewal")
     ResponseEntity<Void> renewLoan(@PathVariable Long id, @RequestHeader(AUTH_TOKEN) String bearerToken);
-
-    @PutMapping("/{id}")
-    Loan updateLoan(@RequestBody Loan loan);
-
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deleteLoan(@PathVariable Long id);
 }

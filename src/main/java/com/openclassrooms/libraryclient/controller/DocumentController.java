@@ -19,8 +19,6 @@ import java.util.Optional;
 @RequestMapping("/documents")
 public class DocumentController {
 
-    Logger log = LoggerFactory.getLogger(DocumentController.class);
-
     @Autowired
     private DocumentProxy documentProxy;
 
