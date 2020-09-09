@@ -14,10 +14,15 @@
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                 <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Profil </a>
                     <div role="menu" class="dropdown-menu">
-                        <a role="presentation" class="dropdown-item" href="<c:url value="/login" />">Se connecter</a>
-                        <a role="presentation" class="dropdown-item" href="<c:url value="/logout" />">Se déconnecter</a>
-                        <a role="presentation" class="dropdown-item" href="<c:url value="/register" />">Créer un compte</a>
-                        <a role="presentation" class="dropdown-item" href="<c:url value="/profil" />">Consulter profil</a></div>
+                        <c:if test="${empty sessionScope.user}">
+                            <a role="presentation" class="dropdown-item" href="<c:url value="/login" />">Se connecter</a>
+                            <a role="presentation" class="dropdown-item" href="<c:url value="/register" />">Créer un compte</a>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.user}">
+                            <a role="presentation" class="dropdown-item" href="<c:url value="/profil" />">Consulter profil</a>
+                            <a role="presentation" class="dropdown-item" href="<c:url value="/logout" />">Se déconnecter</a>
+                        </c:if>
+                    </div>
                 </li>
             </ul><span class="navbar-text actions"></span></div>
     </div>
