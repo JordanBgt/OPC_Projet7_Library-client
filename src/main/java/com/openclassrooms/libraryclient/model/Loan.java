@@ -10,6 +10,7 @@ public class Loan {
     private boolean renewed;
     private User user;
     private Exemplar exemplar;
+    private String cssClass;
 
     public Loan() {
     }
@@ -69,5 +70,13 @@ public class Loan {
 
     public void setExemplar(Exemplar exemplar) {
         this.exemplar = exemplar;
+    }
+
+    public String getCssClass() {
+        return cssClass;
+    }
+
+    public void setCssClass(String cssClass) {
+        this.cssClass = cssClass;
     }
 }

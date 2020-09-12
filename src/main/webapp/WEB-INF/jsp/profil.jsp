@@ -44,7 +44,7 @@
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-12 col-lg-9">
-                                        ${loan.exemplar.documentTitle} - ${loan.exemplar.library.name} - ${loan.endDate}
+                                            ${loan.exemplar.documentTitle} - ${loan.exemplar.library.name} - <span class="badge badge-${loan.cssClass}">${loan.endDate}</span>
                                     </div>
                                     <div class="col-12 col-lg-3 col-renewal-button">
                                         <c:if test="${!loan.renewed}">

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -40,6 +42,8 @@ public class ProfilController {
         User user = (User) session.getAttribute("user");
         String bearerToken = (String) session.getAttribute("auth-token");
         List<Loan> userLoans = loanProxy.getAllByUser(user.getId(), "Bearer " + bearerToken);
+        LocalDate currentDate = LocalDate.now();
+        userLoans.forEach(loan -> setLoansCssClass(loan, currentDate));
         model.addAttribute("loans", userLoans);
         model.addAttribute("user", user);
 
@@ -60,5 +64,22 @@ public class ProfilController {
         String bearerToken = (String) session.getAttribute("auth-token");
         loanProxy.renewLoan(id, "Bearer " + bearerToken);
         return new ModelAndView("redirect:/profil");
+    }
+
+    /**
+     * Method to set loan css class depending on the number of days remaining between the current date and the end date of the loan
+     *
+     * @param loan loan for which we want to set the css class
+     * @param currentDate current date
+     */
+    private void setLoansCssClass(Loan loan, LocalDate currentDate) {
+        long daysBetween = ChronoUnit.DAYS.between(currentDate, loan.getEndDate());
+        if (daysBetween < 0) {
+            loan.setCssClass("danger");
+        } else if (daysBetween <= 3) {
+            loan.setCssClass("warning");
+        } else {
+            loan.setCssClass("info");
+        }
     }
 }
