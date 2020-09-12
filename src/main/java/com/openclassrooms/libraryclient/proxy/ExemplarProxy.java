@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Feign client to request the API Library exemplars endpoints
+ */
 @FeignClient(url = "http://localhost:8080/api/exemplars", name = "exemplar-api")
 public interface ExemplarProxy {
 

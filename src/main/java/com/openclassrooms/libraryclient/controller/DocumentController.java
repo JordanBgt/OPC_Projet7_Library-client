@@ -3,8 +3,6 @@ package com.openclassrooms.libraryclient.controller;
 import com.openclassrooms.libraryclient.model.*;
 import com.openclassrooms.libraryclient.proxy.DocumentProxy;
 import com.openclassrooms.libraryclient.proxy.ExemplarProxy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -15,6 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controller to display documents page
+ *
+ * @see DocumentProxy
+ * @see ExemplarProxy
+ */
 @Controller
 @RequestMapping("/documents")
 public class DocumentController {
@@ -27,6 +31,19 @@ public class DocumentController {
 
     private DocumentForm documentForm = new DocumentForm();
 
+    /**
+     * It displays document.jsp with a page of documents
+     *
+     * @param model model which supply attributes used for rendering views
+     * @param page the requested page
+     * @param size number of documents per page
+     * @param sortBy sort criteria
+     * @param direction direction criteria
+     * @param unpaged boolean if we want all documents in a single page
+     *
+     * @return name of the requested jsp
+     * @see DocumentProxy#getAllDocuments(String, String, String, String, String, String, Integer, Integer, String, Sort.Direction, boolean)
+     */
     @GetMapping
     public String getAllDocuments(Model model,
                                   @RequestParam(required = false) Integer page,
@@ -44,6 +61,16 @@ public class DocumentController {
         return "document";
     }
 
+    /**
+     * It displays details of a document
+     *
+     * @param model model which supply attributes used for rendering views
+     * @param id id of the requested document
+     *
+     * @return name of the requested jsp
+     * @see DocumentProxy#getDocument(Long)
+     * @see ExemplarProxy#getAllAvailableExemplarsByDocumentId(Long)
+     */
     @GetMapping("/{id}")
     public String getDocument(Model model, @PathVariable Long id) {
         Document document = documentProxy.getDocument(id);
@@ -55,6 +82,14 @@ public class DocumentController {
         return "document-detail";
     }
 
+    /**
+     * Method called when a user want to filter results
+     *
+     * @param documentForm form which represents search criteria
+     *
+     * @return redirect to getAllDocuments method
+     * @see DocumentForm
+     */
     @PostMapping("/search")
     public ModelAndView searchDocuments(@ModelAttribute DocumentForm documentForm) {
         this.documentForm = documentForm;

@@ -14,6 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * Controller to display the profile page
+ *
+ * @see LoanProxy
+ */
 @Controller
 @RequestMapping("/profil")
 public class ProfilController {
@@ -21,6 +26,15 @@ public class ProfilController {
     @Autowired
     private LoanProxy loanProxy;
 
+    /**
+     * Method to display profil page
+     *
+     * @param session the session
+     * @param model model which supply attributes used for rendering views
+     *
+     * @return name of the requested jsp
+     * @see LoanProxy#getAllByUser(Long, String)
+     */
     @GetMapping
     public String getProfil(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
@@ -32,6 +46,15 @@ public class ProfilController {
         return "profil";
     }
 
+    /**
+     * Method to extend a loan
+     *
+     * @param id lid of the loan to extend
+     * @param session the session
+     *
+     * @return redirect to the profile page
+     * @see LoanProxy#renewLoan(Long, String)
+     */
     @GetMapping("/{id}/renewal")
     public ModelAndView renewLoan(@PathVariable Long id, HttpSession session) {
         String bearerToken = (String) session.getAttribute("auth-token");

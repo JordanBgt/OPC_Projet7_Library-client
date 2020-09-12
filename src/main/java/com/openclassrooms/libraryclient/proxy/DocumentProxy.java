@@ -7,6 +7,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Feign client to request the API Library documents endpoints
+ */
 @FeignClient(url = "http://localhost:8080/api/documents", name = "document-api")
 public interface DocumentProxy {
 
